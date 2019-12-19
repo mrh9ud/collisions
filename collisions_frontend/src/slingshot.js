@@ -13,11 +13,17 @@ class SlingShot {
         this.sling = Matter.Constraint.create(options)
         Matter.World.add(world, this.sling)
     }
+
+    fly() {
+        this.sling.bodyB = null
+    }
     show() {
+        if (this.sling.bodyB) {
         stroke(255);
         const posA = this.sling.pointA
         const posB = this.sling.bodyB.position
         line(posA.x, posA.y, posB.x, posB.y)
+        }
     }
 
 }

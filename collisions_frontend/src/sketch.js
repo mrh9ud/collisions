@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
     console.log("DOM loaded")
 })
-// const { Engine, World, Bodies, MouseConstraint, Constraint } = Matter;
 
 let ground
 const boxes = []
@@ -11,7 +10,7 @@ let mConstraint
 let slingshot
 
 function setup() {
-    const canvas = createCanvas(800, 400)
+    const canvas = createCanvas(800, 600)
     engine = Matter.Engine.create()
     world = engine.world
     ground = new Ground(width / 2, height - 10, width, 20)
@@ -30,6 +29,18 @@ function setup() {
     Matter.World.add(world, mConstraint)
 }
         
+function keyPressed() {
+    if (key == 'r') {
+        slingshot.fly()
+    }
+}
+// function mouseReleased() {
+//     setTimeout(() => {
+//     slingshot.fly()
+//     }, 15)
+// }
+
+
 function draw() {
     background(44)
     ground.show()
