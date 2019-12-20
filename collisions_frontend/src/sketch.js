@@ -1,6 +1,3 @@
-document.addEventListener("DOMContentLoaded", function(){
-    console.log("DOM loaded")
-})
 
 let ground
 const boxes = []
@@ -11,6 +8,7 @@ let slingshot
 
 function setup() {
     const canvas = createCanvas(800, 600)
+    canvas.parent("game")
     engine = Matter.Engine.create()
     world = engine.world
     ground = new Ground(width / 2, height - 10, width, 20)
@@ -34,11 +32,13 @@ function keyPressed() {
         slingshot.fly()
     }
 }
-// function mouseReleased() {
-//     setTimeout(() => {
-//     slingshot.fly()
-//     }, 15)
-// }
+
+
+function mouseReleased() {
+    setTimeout(() => {
+    slingshot.fly()
+    }, 15)
+}
 
 
 function draw() {
@@ -58,3 +58,58 @@ function createCanvasDiv() {
     canvasDiv.classList.add('canvas-container')
     bodyEl.appendChild(canvasDiv)
 }
+
+
+
+
+function login() {
+    // create canvas
+    // debugger
+    const canvas = document.querySelector("canvas")
+    // canvas.remove()
+    var myCanvas = createCanvas(710, 400);
+    myCanvas.parent("main")
+    background(0)
+    input = createInput();
+    input.position(50, 65);
+    input.parent("login")
+  
+    button = createButton('submit');
+    button.position(input.x + input.width, 65);
+    button.mousePressed(missiles);
+    button.id("submit")
+    button.parent("login")
+  
+    greeting = createElement('h1', 'what is your name?');
+    greeting.position(20, 5);
+    greeting.parent("main")
+  
+    textAlign(CENTER);
+    textSize(50);
+  }
+  
+  function greet() {
+    const name = input.value();
+    greeting.html('hello ' + name + '!');
+    input.value('');
+  
+    for (let i = 0; i < 200; i++) {
+      push();
+      fill(random(255), 255, 255);
+      translate(random(width), random(height));
+      rotate(random(2 * PI));
+      text(name, 0, 0);
+      pop();
+    }
+  }
+  
+  function missiles(){
+    document.getElementById("login").innerHTML = ""
+    greet()
+
+    missile = createElement('h1', 'choose one of missile');
+    missile.position(150, 150);
+    missile.parent("main")
+
+  }
+  

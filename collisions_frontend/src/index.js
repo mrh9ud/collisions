@@ -1,8 +1,3 @@
-document.addEventListener("DOMContentLoaded", function(){
-  // console.log("afawef")
-  // document.getElementById("submit").addEventListener("click", missiles)
-})
-
 let input, button, greeting;
 
 function setup() {
@@ -12,13 +7,13 @@ function setup() {
   background(255, 204, 0)
   input = createInput();
   input.position(20, 65);
-  input.parent("main")
+  input.parent("login")
 
   button = createButton('submit');
   button.position(input.x + input.width, 65);
   button.mousePressed(missiles);
   button.id("submit")
-  button.parent("main")
+  button.parent("login")
 
   greeting = createElement('h2', 'what is your name?');
   greeting.position(20, 5);
@@ -44,26 +39,6 @@ function greet() {
 }
 
 function missiles(){
-  document.getElementById("main").innerHTML = ""
-  var myCanvas = createCanvas(710, 400);
-  myCanvas.parent("main")
-  background(255, 204, 0)
-  input = createInput();
-  input.position(20, 65);
-  input.parent("main")
-
-  button = createButton('submit');
-  button.position(input.x + input.width, 65);
-  button.mousePressed(missiles);
-  button.id("submit")
-  button.parent("main")
-
-  greeting = createElement('h2', 'what is your name?');
-  greeting.position(20, 5);
-  greeting.parent("main")
-
-  textAlign(CENTER);
-  textSize(50);
-  console.log("ewaefefa")
-  
+  document.getElementById("login").innerHTML = ""
+  greet()
 }
